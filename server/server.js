@@ -13,7 +13,7 @@ app.use(require('./routes/index'));
 
 mongoose.connect(process.env.URLDB, { useCreateIndex: true, useNewUrlParser: true })
 .then(db => console.log(`DB is connected`))
-.catch(err => console.error(err));;
+.catch(err => console.error(err));
 
 app.listen(process.env.PORT, () => {
     console.log('Escuchando puerto: ', process.env.PORT);
