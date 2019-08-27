@@ -20,4 +20,20 @@ app.post('/usuario',function(req,res){
     })
 });
 
+app.get('/usuario',function(req,res){
+   
+    Usuario.find()
+        .exec((err, usuarios) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            res.json({ok: true,usuarios});
+
+        })
+})
+
 module.exports = app;
