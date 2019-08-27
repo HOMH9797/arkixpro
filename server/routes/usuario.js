@@ -3,6 +3,22 @@ const Usuario = require('../models/usuario');
 const bcrypt = require('bcrypt');
 const app = express();
 
+app.get('/usuario',function(req,res){
+   
+    Usuario.find()
+        .exec((err, usuarios) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    err
+                });
+            }
+
+            res.json({ok: true,usuarios});
+
+        })
+})
+
 app.post('/usuario',function(req,res){
     let body= req.body;
 
@@ -19,21 +35,5 @@ app.post('/usuario',function(req,res){
         res.json({ok: true, usuario: usuarioDB})
     })
 });
-
-app.get('/usuario',function(req,res){
-   
-    Usuario.find()
-        .exec((err, usuarios) => {
-            if (err) {
-                return res.status(500).json({
-                    ok: false,
-                    err
-                });
-            }
-
-            res.json({ok: true,usuarios});
-
-        })
-})
 
 module.exports = app;
