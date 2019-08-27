@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 app.use(require('./routes/index'));
 
-mongoose.connect(process.env.URLDB, { useCreateIndex: true, useNewUrlParser: true }, (err, res) => {
+mongoose.connect(process.env.URLDB, { useCreateIndex: true, useNewUrlParser: true }, function(err, res){
 
     if (err) throw err;
     
